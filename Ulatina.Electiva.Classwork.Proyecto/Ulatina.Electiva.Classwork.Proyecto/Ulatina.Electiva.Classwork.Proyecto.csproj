@@ -90,6 +90,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Dominio\Acciones\" />
+    <Folder Include="Dominio\Especificaciones\" />
+    <Folder Include="Dominio\Repositorio\" />
+    <Folder Include="Dominio\Validaciones\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
