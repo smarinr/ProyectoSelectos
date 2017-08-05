@@ -1,0 +1,257 @@
+﻿USE [master]
+GO
+
+/****** Object:  Database [ProyectoTopicos]    Script Date: 05-Aug-17 05:09:09 PM ******/
+DROP DATABASE [ProyectoTopicos]
+GO
+
+/****** Object:  Database [ProyectoTopicos]    Script Date: 05-Aug-17 05:09:09 PM ******/
+CREATE DATABASE [ProyectoTopicos]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'ProyectoTopicos', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\ProyectoTopicos.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'ProyectoTopicos_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\ProyectoTopicos_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET COMPATIBILITY_LEVEL = 130
+GO
+
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [ProyectoTopicos].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET ANSI_NULL_DEFAULT OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET ANSI_NULLS OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET ANSI_PADDING OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET ANSI_WARNINGS OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET ARITHABORT OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET AUTO_CLOSE OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET AUTO_SHRINK OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET AUTO_UPDATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET CURSOR_DEFAULT  GLOBAL 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET NUMERIC_ROUNDABORT OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET QUOTED_IDENTIFIER OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET RECURSIVE_TRIGGERS OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET  DISABLE_BROKER 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET TRUSTWORTHY OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET PARAMETERIZATION SIMPLE 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET HONOR_BROKER_PRIORITY OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET RECOVERY FULL 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET  MULTI_USER 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET PAGE_VERIFY CHECKSUM  
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET DB_CHAINING OFF 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET DELAYED_DURABILITY = DISABLED 
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET QUERY_STORE = OFF
+GO
+
+USE [ProyectoTopicos]
+GO
+
+ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIMATION = OFF;
+GO
+
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET LEGACY_CARDINALITY_ESTIMATION = PRIMARY;
+GO
+
+ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;
+GO
+
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = PRIMARY;
+GO
+
+ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;
+GO
+
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET PARAMETER_SNIFFING = PRIMARY;
+GO
+
+ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
+GO
+
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES = PRIMARY;
+GO
+
+ALTER DATABASE [ProyectoTopicos] SET  READ_WRITE 
+GO
+
+USE [ProyectoTopicos]
+GO
+
+/****** Object:  Table [dbo].[ArticuloPerdido]    Script Date: 05-Aug-17 05:09:44 PM ******/
+DROP TABLE [dbo].[ArticuloPerdido]
+GO
+
+/****** Object:  Table [dbo].[ArticuloPerdido]    Script Date: 05-Aug-17 05:09:44 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ArticuloPerdido](
+	[idArticuloPerdidoidArticuloPerdido] [int] NULL,
+	[descripcionArticuloPerdido] [nvarchar](100) NULL,
+	[lugarArticuloPerdido] [nvarchar](100) NULL,
+	[statusArticuloPerdido] [nvarchar](15) NULL,
+	[idCategoria] [int] NULL
+) ON [PRIMARY]
+GO
+
+USE [ProyectoTopicos]
+GO
+
+/****** Object:  Table [dbo].[Categoria]    Script Date: 05-Aug-17 05:10:04 PM ******/
+DROP TABLE [dbo].[Categoria]
+GO
+
+/****** Object:  Table [dbo].[Categoria]    Script Date: 05-Aug-17 05:10:04 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Categoria](
+	[idCategoria] [int] IDENTITY(20000,1) NOT NULL,
+	[nombreCategoria] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_CATEGORIA] PRIMARY KEY CLUSTERED 
+(
+	[idCategoria] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ProyectoTopicos]
+GO
+
+ALTER TABLE [dbo].[Logs] DROP CONSTRAINT [DF_Logs_TimeStamp]
+GO
+
+/****** Object:  Table [dbo].[Logs]    Script Date: 05-Aug-17 05:10:17 PM ******/
+DROP TABLE [dbo].[Logs]
+GO
+
+/****** Object:  Table [dbo].[Logs]    Script Date: 05-Aug-17 05:10:17 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Logs](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[LEVEL] [varchar](255) NOT NULL,
+	[CALLSITE] [varchar](500) NOT NULL,
+	[TYPE] [varchar](1000) NOT NULL,
+	[MESSAGE] [varchar](1000) NOT NULL,
+	[STACKTRACE] [varchar](max) NOT NULL,
+	[INNEREXCEPTION] [varchar](max) NOT NULL,
+	[ADDITIONALINFO] [varchar](max) NOT NULL,
+	[LoggedOnDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_logs] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Logs] ADD  CONSTRAINT [DF_Logs_TimeStamp]  DEFAULT (getdate()) FOR [LoggedOnDate]
+GO
+
+USE [ProyectoTopicos]
+GO
+
+/****** Object:  Table [dbo].[Usuario]    Script Date: 05-Aug-17 05:10:29 PM ******/
+DROP TABLE [dbo].[Usuario]
+GO
+
+/****** Object:  Table [dbo].[Usuario]    Script Date: 05-Aug-17 05:10:29 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Usuario](
+	[idUsuario] [int] IDENTITY(30000,1) NOT NULL,
+	[nombreUsuario] [nvarchar](50) NOT NULL,
+	[apellido1Usuario] [nvarchar](50) NOT NULL,
+	[apellido2Usuario] [nvarchar](50) NOT NULL,
+	[telefonoUsuario] [nvarchar](12) NOT NULL,
+	[rolUsuario] [nvarchar](5) NOT NULL,
+ CONSTRAINT [PK_USUARIO] PRIMARY KEY CLUSTERED 
+(
+	[idUsuario] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
