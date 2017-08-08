@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Ulatina.Electiva.Classwork.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ArticuloPerdido">
+          <Key>
+            <PropertyRef Name="idArticuloPerdido" />
+          </Key>
+          <Property Name="idArticuloPerdido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcionArticuloPerdido" Type="nvarchar" MaxLength="100" />
+          <Property Name="statusArticuloPerdido" Type="nvarchar" MaxLength="15" />
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreCategoria" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Custodia">
+          <Key>
+            <PropertyRef Name="idCustodia" />
+          </Key>
+          <Property Name="idCustodia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idArticuloPerdido" Type="int" Nullable="false" />
+          <Property Name="idUsuarioReporta" Type="int" Nullable="false" />
+          <Property Name="idUsuarioCustodia" Type="int" Nullable="false" />
+          <Property Name="fechaCustodiaIngresada" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LEVEL" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CALLSITE" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="TYPE" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="MESSAGE" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="STACKTRACE" Type="varchar(max)" Nullable="false" />
+          <Property Name="INNEREXCEPTION" Type="varchar(max)" Nullable="false" />
+          <Property Name="ADDITIONALINFO" Type="varchar(max)" Nullable="false" />
+          <Property Name="LoggedOnDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido1Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido2Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefonoUsuario" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="rolUsuario" Type="nvarchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ArticuloPerdido_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="ArticuloPerdido" Type="Self.ArticuloPerdido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="ArticuloPerdido">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Custodia_ArticuloPerdido">
+          <End Role="ArticuloPerdido" Type="Self.ArticuloPerdido" Multiplicity="1" />
+          <End Role="Custodia" Type="Self.Custodia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticuloPerdido">
+              <PropertyRef Name="idArticuloPerdido" />
+            </Principal>
+            <Dependent Role="Custodia">
+              <PropertyRef Name="idArticuloPerdido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Custodia_UsuarioCustodia">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Custodia" Type="Self.Custodia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Custodia">
+              <PropertyRef Name="idUsuarioCustodia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Custodia_UsuarioReporta">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Custodia" Type="Self.Custodia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Custodia">
+              <PropertyRef Name="idUsuarioReporta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UlatinaElectivaClassworkModelStoreContainer">
+          <EntitySet Name="ArticuloPerdido" EntityType="Self.ArticuloPerdido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Custodia" EntityType="Self.Custodia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ArticuloPerdido_Categoria" Association="Self.FK_ArticuloPerdido_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="ArticuloPerdido" EntitySet="ArticuloPerdido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Custodia_ArticuloPerdido" Association="Self.FK_Custodia_ArticuloPerdido">
+            <End Role="ArticuloPerdido" EntitySet="ArticuloPerdido" />
+            <End Role="Custodia" EntitySet="Custodia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Custodia_UsuarioCustodia" Association="Self.FK_Custodia_UsuarioCustodia">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Custodia" EntitySet="Custodia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Custodia_UsuarioReporta" Association="Self.FK_Custodia_UsuarioReporta">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Custodia" EntitySet="Custodia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Ulatina.Electiva.Classwork.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ArticuloPerdido">
+          <Key>
+            <PropertyRef Name="idArticuloPerdido" />
+          </Key>
+          <Property Name="idArticuloPerdido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcionArticuloPerdido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="statusArticuloPerdido" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK_ArticuloPerdido_Categoria" FromRole="ArticuloPerdido" ToRole="Categoria" />
+          <NavigationProperty Name="Custodias" Relationship="Self.FK_Custodia_ArticuloPerdido" FromRole="ArticuloPerdido" ToRole="Custodia" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ArticuloPerdidoes" Relationship="Self.FK_ArticuloPerdido_Categoria" FromRole="Categoria" ToRole="ArticuloPerdido" />
+        </EntityType>
+        <EntityType Name="Custodia">
+          <Key>
+            <PropertyRef Name="idCustodia" />
+          </Key>
+          <Property Name="idCustodia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idArticuloPerdido" Type="Int32" Nullable="false" />
+          <Property Name="idUsuarioReporta" Type="Int32" Nullable="false" />
+          <Property Name="idUsuarioCustodia" Type="Int32" Nullable="false" />
+          <Property Name="fechaCustodiaIngresada" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ArticuloPerdido" Relationship="Self.FK_Custodia_ArticuloPerdido" FromRole="Custodia" ToRole="ArticuloPerdido" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Custodia_UsuarioCustodia" FromRole="Custodia" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK_Custodia_UsuarioReporta" FromRole="Custodia" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LEVEL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CALLSITE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MESSAGE" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STACKTRACE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="INNEREXCEPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDITIONALINFO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LoggedOnDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido1Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido2Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefonoUsuario" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rolUsuario" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Custodias" Relationship="Self.FK_Custodia_UsuarioCustodia" FromRole="Usuario" ToRole="Custodia" />
+          <NavigationProperty Name="Custodias1" Relationship="Self.FK_Custodia_UsuarioReporta" FromRole="Usuario" ToRole="Custodia" />
+        </EntityType>
+        <Association Name="FK_ArticuloPerdido_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="ArticuloPerdido" Type="Self.ArticuloPerdido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="ArticuloPerdido">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Custodia_ArticuloPerdido">
+          <End Role="ArticuloPerdido" Type="Self.ArticuloPerdido" Multiplicity="1" />
+          <End Role="Custodia" Type="Self.Custodia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticuloPerdido">
+              <PropertyRef Name="idArticuloPerdido" />
+            </Principal>
+            <Dependent Role="Custodia">
+              <PropertyRef Name="idArticuloPerdido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Custodia_UsuarioCustodia">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Custodia" Type="Self.Custodia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Custodia">
+              <PropertyRef Name="idUsuarioCustodia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Custodia_UsuarioReporta">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Custodia" Type="Self.Custodia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Custodia">
+              <PropertyRef Name="idUsuarioReporta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoArticuloPerdidoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ArticuloPerdidoes" EntityType="Self.ArticuloPerdido" />
+          <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+          <EntitySet Name="Custodias" EntityType="Self.Custodia" />
+          <EntitySet Name="Logs" EntityType="Self.Log" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_ArticuloPerdido_Categoria" Association="Self.FK_ArticuloPerdido_Categoria">
+            <End Role="Categoria" EntitySet="Categorias" />
+            <End Role="ArticuloPerdido" EntitySet="ArticuloPerdidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Custodia_ArticuloPerdido" Association="Self.FK_Custodia_ArticuloPerdido">
+            <End Role="ArticuloPerdido" EntitySet="ArticuloPerdidoes" />
+            <End Role="Custodia" EntitySet="Custodias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Custodia_UsuarioCustodia" Association="Self.FK_Custodia_UsuarioCustodia">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Custodia" EntitySet="Custodias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Custodia_UsuarioReporta" Association="Self.FK_Custodia_UsuarioReporta">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Custodia" EntitySet="Custodias" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UlatinaElectivaClassworkModelStoreContainer" CdmEntityContainer="ProyectoArticuloPerdidoEntities">
+          <EntitySetMapping Name="ArticuloPerdidoes">
+            <EntityTypeMapping TypeName="Ulatina.Electiva.Classwork.Model.ArticuloPerdido">
+              <MappingFragment StoreEntitySet="ArticuloPerdido">
+                <ScalarProperty Name="idArticuloPerdido" ColumnName="idArticuloPerdido" />
+                <ScalarProperty Name="descripcionArticuloPerdido" ColumnName="descripcionArticuloPerdido" />
+                <ScalarProperty Name="statusArticuloPerdido" ColumnName="statusArticuloPerdido" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="Ulatina.Electiva.Classwork.Model.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Custodias">
+            <EntityTypeMapping TypeName="Ulatina.Electiva.Classwork.Model.Custodia">
+              <MappingFragment StoreEntitySet="Custodia">
+                <ScalarProperty Name="idCustodia" ColumnName="idCustodia" />
+                <ScalarProperty Name="idArticuloPerdido" ColumnName="idArticuloPerdido" />
+                <ScalarProperty Name="idUsuarioReporta" ColumnName="idUsuarioReporta" />
+                <ScalarProperty Name="idUsuarioCustodia" ColumnName="idUsuarioCustodia" />
+                <ScalarProperty Name="fechaCustodiaIngresada" ColumnName="fechaCustodiaIngresada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="Ulatina.Electiva.Classwork.Model.Log">
+              <MappingFragment StoreEntitySet="Logs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LEVEL" ColumnName="LEVEL" />
+                <ScalarProperty Name="CALLSITE" ColumnName="CALLSITE" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+                <ScalarProperty Name="STACKTRACE" ColumnName="STACKTRACE" />
+                <ScalarProperty Name="INNEREXCEPTION" ColumnName="INNEREXCEPTION" />
+                <ScalarProperty Name="ADDITIONALINFO" ColumnName="ADDITIONALINFO" />
+                <ScalarProperty Name="LoggedOnDate" ColumnName="LoggedOnDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="Ulatina.Electiva.Classwork.Model.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+                <ScalarProperty Name="apellido1Usuario" ColumnName="apellido1Usuario" />
+                <ScalarProperty Name="apellido2Usuario" ColumnName="apellido2Usuario" />
+                <ScalarProperty Name="telefonoUsuario" ColumnName="telefonoUsuario" />
+                <ScalarProperty Name="rolUsuario" ColumnName="rolUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
