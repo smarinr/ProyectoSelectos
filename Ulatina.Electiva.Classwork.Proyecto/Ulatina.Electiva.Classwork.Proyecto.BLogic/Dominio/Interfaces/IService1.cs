@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace Ulatina.Electiva.Classwork.Proyecto.BL
+namespace Ulatina.Electiva.Classwork.Proyecto.BLogic
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]

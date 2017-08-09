@@ -50,63 +50,69 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticuloPerdido.cs">
-      <DependentUpon>ContextoProyecto.tt</DependentUpon>
+      <DependentUpon>ContextoArticuloPerdido.tt</DependentUpon>
     </Compile>
     <Compile Include="Categoria.cs">
-      <DependentUpon>ContextoProyecto.tt</DependentUpon>
+      <DependentUpon>ContextoArticuloPerdido.tt</DependentUpon>
     </Compile>
-    <Compile Include="ContextoProyecto.Context.cs">
+    <Compile Include="ContextoArticuloPerdido.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ContextoProyecto.Context.tt</DependentUpon>
+      <DependentUpon>ContextoArticuloPerdido.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ContextoProyecto.cs">
+    <Compile Include="ContextoArticuloPerdido.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ContextoProyecto.tt</DependentUpon>
+      <DependentUpon>ContextoArticuloPerdido.tt</DependentUpon>
     </Compile>
-    <Compile Include="ContextoProyecto.Designer.cs">
+    <Compile Include="ContextoArticuloPerdido.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ContextoProyecto.edmx</DependentUpon>
+      <DependentUpon>ContextoArticuloPerdido.edmx</DependentUpon>
     </Compile>
     <Compile Include="Custodia.cs">
-      <DependentUpon>ContextoProyecto.tt</DependentUpon>
+      <DependentUpon>ContextoArticuloPerdido.tt</DependentUpon>
     </Compile>
     <Compile Include="Log.cs">
-      <DependentUpon>ContextoProyecto.tt</DependentUpon>
+      <DependentUpon>ContextoArticuloPerdido.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ArticuloPerdido.cs" />
+    <Compile Include="Model\Categoria.cs" />
+    <Compile Include="Model\Custodia.cs" />
+    <Compile Include="Model\Log.cs" />
+    <Compile Include="Model\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs">
-      <DependentUpon>ContextoProyecto.tt</DependentUpon>
+      <DependentUpon>ContextoArticuloPerdido.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="ContextoProyecto.edmx">
+    <EntityDeploy Include="ContextoArticuloPerdido.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ContextoProyecto.Designer.cs</LastGenOutput>
+      <LastGenOutput>ContextoArticuloPerdido.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ContextoProyecto.edmx.diagram">
-      <DependentUpon>ContextoProyecto.edmx</DependentUpon>
+    <None Include="ContextoArticuloPerdido.edmx.diagram">
+      <DependentUpon>ContextoArticuloPerdido.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ContextoProyecto.Context.tt">
+    <Content Include="ContextoArticuloPerdido.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ContextoProyecto.edmx</DependentUpon>
-      <LastGenOutput>ContextoProyecto.Context.cs</LastGenOutput>
+      <DependentUpon>ContextoArticuloPerdido.edmx</DependentUpon>
+      <LastGenOutput>ContextoArticuloPerdido.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ContextoProyecto.tt">
+    <Content Include="ContextoArticuloPerdido.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ContextoProyecto.edmx</DependentUpon>
-      <LastGenOutput>ContextoProyecto.cs</LastGenOutput>
+      <DependentUpon>ContextoArticuloPerdido.edmx</DependentUpon>
+      <LastGenOutput>ContextoArticuloPerdido.cs</LastGenOutput>
     </Content>
     <Content Include="DLL.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

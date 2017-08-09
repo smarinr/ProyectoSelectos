@@ -6,12 +6,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E0C98442-ECEB-422A-924E-B57C4838C5AE}</ProjectGuid>
+    <ProjectGuid>{00BB19A6-E752-49C0-8008-30D1025E992E}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ulatina.Electiva.Classwork.Proyecto.BL</RootNamespace>
-    <AssemblyName>Ulatina.Electiva.Classwork.Proyecto.BL</AssemblyName>
+    <RootNamespace>Ulatina.Electiva.Classwork.Proyecto.BLogic</RootNamespace>
+    <AssemblyName>Ulatina.Electiva.Classwork.Proyecto.BLogic</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -60,25 +60,24 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\Service1.svc" />
-    <Content Include="Dominio\Servicios\Service.svc" />
+    <Content Include="Dominio\Servicios\Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dominio\Interfaces\IService.cs" />
-    <Compile Include="Properties\Service1.svc.cs">
+    <Compile Include="Dominio\Repositorio\ArticuloPerdido.cs" />
+    <Compile Include="Dominio\Repositorio\Categoria.cs" />
+    <Compile Include="Dominio\Repositorio\Custodia.cs" />
+    <Compile Include="Dominio\Repositorio\Usuario.cs" />
+    <Compile Include="Dominio\Servicios\Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
+    <Compile Include="Dominio\Interfaces\IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Dominio\Servicios\Service.svc.cs">
-      <DependentUpon>Service.svc</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Dominio\Acciones\" />
     <Folder Include="Dominio\Especificaciones\" />
-    <Folder Include="Dominio\Repositorio\" />
     <Folder Include="Dominio\Validaciones\" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +87,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ulatina.Electiva.Classwork.Proyecto.Model\Ulatina.Electiva.Classwork.Proyecto.Model.csproj">
+      <Project>{9CD82ABD-4E62-4C4A-9CA6-0C84C72AD351}</Project>
+      <Name>Ulatina.Electiva.Classwork.Proyecto.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -102,9 +107,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>64465</DevelopmentServerPort>
+          <DevelopmentServerPort>50978</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:64465/</IISUrl>
+          <IISUrl>http://localhost:50978/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

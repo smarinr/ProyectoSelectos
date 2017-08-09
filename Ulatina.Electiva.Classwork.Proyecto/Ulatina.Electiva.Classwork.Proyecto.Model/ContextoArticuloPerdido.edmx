@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Ulatina.Electiva.Classwork.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ProyectoArticuloPerdidoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ArticuloPerdido">
           <Key>
             <PropertyRef Name="idArticuloPerdido" />
@@ -104,7 +104,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="UlatinaElectivaClassworkModelStoreContainer">
+        <EntityContainer Name="ProyectoArticuloPerdidoModelStoreContainer">
           <EntitySet Name="ArticuloPerdido" EntityType="Self.ArticuloPerdido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Custodia" EntityType="Self.Custodia" Schema="dbo" store:Type="Tables" />
@@ -131,7 +131,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Ulatina.Electiva.Classwork.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ProyectoArticuloPerdidoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ArticuloPerdido">
           <Key>
             <PropertyRef Name="idArticuloPerdido" />
@@ -267,9 +267,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UlatinaElectivaClassworkModelStoreContainer" CdmEntityContainer="ProyectoArticuloPerdidoEntities">
+        <EntityContainerMapping StorageEntityContainer="ProyectoArticuloPerdidoModelStoreContainer" CdmEntityContainer="ProyectoArticuloPerdidoEntities">
           <EntitySetMapping Name="ArticuloPerdidoes">
-            <EntityTypeMapping TypeName="Ulatina.Electiva.Classwork.Model.ArticuloPerdido">
+            <EntityTypeMapping TypeName="ProyectoArticuloPerdidoModel.ArticuloPerdido">
               <MappingFragment StoreEntitySet="ArticuloPerdido">
                 <ScalarProperty Name="idArticuloPerdido" ColumnName="idArticuloPerdido" />
                 <ScalarProperty Name="descripcionArticuloPerdido" ColumnName="descripcionArticuloPerdido" />
@@ -279,7 +279,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categorias">
-            <EntityTypeMapping TypeName="Ulatina.Electiva.Classwork.Model.Categoria">
+            <EntityTypeMapping TypeName="ProyectoArticuloPerdidoModel.Categoria">
               <MappingFragment StoreEntitySet="Categoria">
                 <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
                 <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
@@ -287,7 +287,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Custodias">
-            <EntityTypeMapping TypeName="Ulatina.Electiva.Classwork.Model.Custodia">
+            <EntityTypeMapping TypeName="ProyectoArticuloPerdidoModel.Custodia">
               <MappingFragment StoreEntitySet="Custodia">
                 <ScalarProperty Name="idCustodia" ColumnName="idCustodia" />
                 <ScalarProperty Name="idArticuloPerdido" ColumnName="idArticuloPerdido" />
@@ -298,7 +298,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Logs">
-            <EntityTypeMapping TypeName="Ulatina.Electiva.Classwork.Model.Log">
+            <EntityTypeMapping TypeName="ProyectoArticuloPerdidoModel.Log">
               <MappingFragment StoreEntitySet="Logs">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="LEVEL" ColumnName="LEVEL" />
@@ -313,7 +313,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="Ulatina.Electiva.Classwork.Model.Usuario">
+            <EntityTypeMapping TypeName="ProyectoArticuloPerdidoModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />

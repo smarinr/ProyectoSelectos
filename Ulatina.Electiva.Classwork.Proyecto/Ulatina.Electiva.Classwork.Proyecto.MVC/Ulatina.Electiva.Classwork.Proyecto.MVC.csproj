@@ -276,6 +276,16 @@
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ulatina.Electiva.Classwork.Proyecto.BLogic\Ulatina.Electiva.Classwork.Proyecto.BLogic.csproj">
+      <Project>{00bb19a6-e752-49c0-8008-30d1025e992e}</Project>
+      <Name>Ulatina.Electiva.Classwork.Proyecto.BLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ulatina.Electiva.Classwork.Proyecto.Model\Ulatina.Electiva.Classwork.Proyecto.Model.csproj">
+      <Project>{9cd82abd-4e62-4c4a-9ca6-0c84c72ad351}</Project>
+      <Name>Ulatina.Electiva.Classwork.Proyecto.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
