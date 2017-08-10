@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using Ulatina.Electiva.Classwork.Proyecto.Model;
 
 namespace Ulatina.Electiva.Classwork.Proyecto.BLogic
 {
@@ -12,6 +13,8 @@ namespace Ulatina.Electiva.Classwork.Proyecto.BLogic
     [ServiceContract]
     public interface IService1
     {
+        [OperationContract]
+        IList<Usuario> listarUsuarios();
 
         [OperationContract]
         string GetData(int value);

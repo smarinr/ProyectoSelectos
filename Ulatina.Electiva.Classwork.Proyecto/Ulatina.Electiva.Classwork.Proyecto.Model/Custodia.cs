@@ -20,7 +20,6 @@ namespace Ulatina.Electiva.Classwork.Proyecto.Model
         public int idUsuarioCustodia { get; set; }
         public System.DateTime fechaCustodiaIngresada { get; set; }
     
-        public virtual ArticuloPerdido ArticuloPerdido { get; set; }
         public virtual Usuario Usuario { get; set; }
         public virtual Usuario Usuario1 { get; set; }
     }

@@ -40,6 +40,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -64,6 +65,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dominio\Acciones\Usuarios.cs" />
+    <Compile Include="Dominio\Especificaciones\Usuarios.cs" />
     <Compile Include="Dominio\Repositorio\ArticuloPerdido.cs" />
     <Compile Include="Dominio\Repositorio\Categoria.cs" />
     <Compile Include="Dominio\Repositorio\Custodia.cs" />
@@ -76,8 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Dominio\Acciones\" />
-    <Folder Include="Dominio\Especificaciones\" />
     <Folder Include="Dominio\Validaciones\" />
   </ItemGroup>
   <ItemGroup>
@@ -90,7 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ulatina.Electiva.Classwork.Proyecto.Model\Ulatina.Electiva.Classwork.Proyecto.Model.csproj">
-      <Project>{9CD82ABD-4E62-4C4A-9CA6-0C84C72AD351}</Project>
+      <Project>{9cd82abd-4e62-4c4a-9ca6-0c84c72ad351}</Project>
       <Name>Ulatina.Electiva.Classwork.Proyecto.Model</Name>
     </ProjectReference>
   </ItemGroup>

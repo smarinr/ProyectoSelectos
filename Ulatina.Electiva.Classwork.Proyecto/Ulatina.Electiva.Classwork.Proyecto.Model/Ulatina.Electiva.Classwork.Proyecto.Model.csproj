@@ -70,8 +70,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContextoArticuloPerdido.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ContextoUsuario.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContextoUsuario.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContextoUsuario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContextoUsuario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContextoUsuario.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContextoUsuario.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Custodia.cs">
-      <DependentUpon>ContextoArticuloPerdido.tt</DependentUpon>
+      <DependentUpon>ContextoUsuario.tt</DependentUpon>
     </Compile>
     <Compile Include="Log.cs">
       <DependentUpon>ContextoArticuloPerdido.tt</DependentUpon>
@@ -83,7 +98,7 @@
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs">
-      <DependentUpon>ContextoArticuloPerdido.tt</DependentUpon>
+      <DependentUpon>ContextoUsuario.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +109,13 @@
     </EntityDeploy>
     <None Include="ContextoArticuloPerdido.edmx.diagram">
       <DependentUpon>ContextoArticuloPerdido.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="ContextoUsuario.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ContextoUsuario.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ContextoUsuario.edmx.diagram">
+      <DependentUpon>ContextoUsuario.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -107,6 +129,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ContextoArticuloPerdido.edmx</DependentUpon>
       <LastGenOutput>ContextoArticuloPerdido.cs</LastGenOutput>
+    </Content>
+    <Content Include="ContextoUsuario.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ContextoUsuario.edmx</DependentUpon>
+      <LastGenOutput>ContextoUsuario.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ContextoUsuario.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ContextoUsuario.edmx</DependentUpon>
+      <LastGenOutput>ContextoUsuario.cs</LastGenOutput>
     </Content>
     <Content Include="DLL.txt" />
   </ItemGroup>
