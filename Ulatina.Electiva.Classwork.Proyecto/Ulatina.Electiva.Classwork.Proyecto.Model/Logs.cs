@@ -12,16 +12,16 @@ namespace Ulatina.Electiva.Classwork.Proyecto.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Custodia
+    public partial class Logs
     {
-        public int idCustodia { get; set; }
-        public int idArticuloPerdido { get; set; }
-        public int idUsuarioReporta { get; set; }
-        public int idUsuarioCustodia { get; set; }
-        public System.DateTime fechaCustodiaIngresada { get; set; }
-    
-        public virtual ArticuloPerdido ArticuloPerdido { get; set; }
-        public virtual Usuario Usuario { get; set; }
-        public virtual Usuario Usuario1 { get; set; }
+        public int ID { get; set; }
+        public string LEVEL { get; set; }
+        public string CALLSITE { get; set; }
+        public string TYPE { get; set; }
+        public string MESSAGE { get; set; }
+        public string STACKTRACE { get; set; }
+        public string INNEREXCEPTION { get; set; }
+        public string ADDITIONALINFO { get; set; }
+        public System.DateTime LoggedOnDate { get; set; }
     }
 }

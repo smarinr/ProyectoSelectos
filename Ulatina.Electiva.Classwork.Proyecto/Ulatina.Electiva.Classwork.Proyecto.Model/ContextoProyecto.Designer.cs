@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\smarinric\Source\Repos\ProyectoSelectos\Ulatina.Electiva.Classwork.Proyecto\Ulatina.Electiva.Classwork.Proyecto.Model\ContextoArticuloPerdido.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\USER\Source\Repos\ProyectoSelectos\Ulatina.Electiva.Classwork.Proyecto\Ulatina.Electiva.Classwork.Proyecto.Model\ContextoProyecto.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

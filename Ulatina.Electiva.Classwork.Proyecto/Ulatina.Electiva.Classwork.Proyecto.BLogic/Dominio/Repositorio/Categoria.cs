@@ -8,6 +8,6 @@ namespace Ulatina.Electiva.Classwork.Proyecto.BLogic.Dominio.Repositorio
 {
     internal class Categoria
     {
-        private ProyectoArticuloPerdidoEntities _context = new ProyectoArticuloPerdidoEntities();
+        //private ProyectoArticuloPerdidoEntities _context = new ProyectoArticuloPerdidoEntities();
     }
 }

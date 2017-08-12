@@ -12,16 +12,12 @@ namespace Ulatina.Electiva.Classwork.Proyecto.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Log
+    public partial class sysdiagrams
     {
-        public int ID { get; set; }
-        public string LEVEL { get; set; }
-        public string CALLSITE { get; set; }
-        public string TYPE { get; set; }
-        public string MESSAGE { get; set; }
-        public string STACKTRACE { get; set; }
-        public string INNEREXCEPTION { get; set; }
-        public string ADDITIONALINFO { get; set; }
-        public System.DateTime LoggedOnDate { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

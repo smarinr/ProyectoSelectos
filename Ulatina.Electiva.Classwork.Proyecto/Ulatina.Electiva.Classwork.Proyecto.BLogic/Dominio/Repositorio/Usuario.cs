@@ -9,19 +9,19 @@ namespace Repositorio
 {
     internal class Usuarios
     {
-        private UsuarioEntities _context = new UsuarioEntities();
+        private ProyectoArticuloPerdidoEntities _context = new ProyectoArticuloPerdidoEntities();
 
         public Usuarios(){
         }
 
         internal IList<Usuario> listarUsuarios(){
-            IList<Usuario> resultado = _context.Usuarios
+            IList<Usuario> resultado = _context.Usuario
                 .Include("Custodias").ToList();
             return resultado;
         }
         internal IList<Custodia> listarCustodiaPorUsuario (int IdUsuarioCustodia)
         {
-            IList<Custodia> resultado = _context.Custodias
+            IList<Custodia> resultado = _context.Custodia
                 .Include("Usuarios")
                 .Where(c => c.idUsuarioCustodia == IdUsuarioCustodia).ToList();
             return resultado;

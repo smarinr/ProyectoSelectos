@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Ulatina.Electiva.Classwork.Proyecto.Model.ArticuloPerdido>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcionArticuloPerdido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.statusArticuloPerdido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria.nombreCategoria)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcionArticuloPerdido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.statusArticuloPerdido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria.nombreCategoria)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idArticuloPerdido }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idArticuloPerdido }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idArticuloPerdido })
+        </td>
+    </tr>
+}
+
+</table>

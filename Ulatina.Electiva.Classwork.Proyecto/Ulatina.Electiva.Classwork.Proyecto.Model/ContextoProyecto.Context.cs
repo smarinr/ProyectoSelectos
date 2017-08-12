@@ -25,10 +25,11 @@ namespace Ulatina.Electiva.Classwork.Proyecto.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ArticuloPerdido> ArticuloPerdidoes { get; set; }
-        public virtual DbSet<Categoria> Categorias { get; set; }
-        public virtual DbSet<Custodia> Custodias { get; set; }
-        public virtual DbSet<Log> Logs { get; set; }
-        public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<ArticuloPerdido> ArticuloPerdido { get; set; }
+        public virtual DbSet<Categoria> Categoria { get; set; }
+        public virtual DbSet<Custodia> Custodia { get; set; }
+        public virtual DbSet<Logs> Logs { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
     }
 }

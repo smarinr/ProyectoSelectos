@@ -17,13 +17,13 @@ namespace Ulatina.Electiva.Classwork.Proyecto.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Categoria()
         {
-            this.ArticuloPerdidoes = new HashSet<ArticuloPerdido>();
+            this.ArticuloPerdido = new HashSet<ArticuloPerdido>();
         }
     
         public int idCategoria { get; set; }
         public string nombreCategoria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ArticuloPerdido> ArticuloPerdidoes { get; set; }
+        public virtual ICollection<ArticuloPerdido> ArticuloPerdido { get; set; }
     }
 }

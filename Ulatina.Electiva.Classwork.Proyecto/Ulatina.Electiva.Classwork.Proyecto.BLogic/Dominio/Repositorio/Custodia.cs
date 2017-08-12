@@ -8,6 +8,6 @@ namespace Ulatina.Electiva.Classwork.Proyecto.BLogic.Dominio.Repositorio
 {
     internal class Custodia
     {
-        private ProyectoArticuloPerdidoEntities _context = new ProyectoArticuloPerdidoEntities();
+     //   private ProyectoArticuloPerdidoEntities _context = new ProyectoArticuloPerdidoEntities();
     }
 }

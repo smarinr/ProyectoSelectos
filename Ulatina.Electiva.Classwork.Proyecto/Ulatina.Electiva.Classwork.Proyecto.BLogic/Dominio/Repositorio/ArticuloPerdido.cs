@@ -17,14 +17,14 @@ namespace Repositorio
         internal IList<Ulatina.Electiva.Classwork.Proyecto.Model.ArticuloPerdido> listarArticulosPerdidos()
         {
 
-            IList<Ulatina.Electiva.Classwork.Proyecto.Model.ArticuloPerdido> resultado = _context.ArticuloPerdidoes.
+            IList<Ulatina.Electiva.Classwork.Proyecto.Model.ArticuloPerdido> resultado = _context.ArticuloPerdido.
                 Include("Categoria").Include("Custodia").ToList();
             return resultado;
         }
 
         internal IList<Custodia> listarCustodiaPorArticulosPerdidos(int idArticulo)
         {
-            IList<Custodia> resultado = _context.Custodias.
+            IList<Custodia> resultado = _context.Custodia.
                 Include("ArticuloPerdido").Where(c => c.idArticuloPerdido==idArticulo).ToList();
             return resultado;
             

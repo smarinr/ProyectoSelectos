@@ -17,7 +17,7 @@ namespace Ulatina.Electiva.Classwork.Proyecto.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ArticuloPerdido()
         {
-            this.Custodias = new HashSet<Custodia>();
+            this.Custodia = new HashSet<Custodia>();
         }
     
         public int idArticuloPerdido { get; set; }
@@ -27,6 +27,6 @@ namespace Ulatina.Electiva.Classwork.Proyecto.Model
     
         public virtual Categoria Categoria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Custodia> Custodias { get; set; }
+        public virtual ICollection<Custodia> Custodia { get; set; }
     }
 }
