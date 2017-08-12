@@ -20,7 +20,17 @@ namespace Ulatina.Electiva.Classwork.Proyecto.BLogic
             resultado = miAccion.listarUsuarios();
             return resultado;
         }
-        public string GetData(int value)
+
+///*
+        public IList<ArticuloPerdido> listarArticulos()
+        {
+            IList<ArticuloPerdido> resultado;
+            var miAccion = new Acciones.ArticulosPedidos();
+            resultado = miAccion.listarArticulosPerdidos();
+            return resultado;
+        }
+  //*/
+    public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
         }

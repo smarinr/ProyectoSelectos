@@ -15,6 +15,7 @@ namespace Ulatina.Electiva.Classwork.Proyecto.BLogic
     {
         [OperationContract]
         IList<Usuario> listarUsuarios();
+        IList<ArticuloPerdido> listarArticulos();
 
         [OperationContract]
         string GetData(int value);
