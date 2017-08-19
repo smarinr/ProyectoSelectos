@@ -70,21 +70,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContextoProyecto.edmx</DependentUpon>
     </Compile>
-    <Compile Include="ContextoUsuario.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ContextoUsuario.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ContextoUsuario.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ContextoUsuario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ContextoUsuario.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ContextoUsuario.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Custodia.cs">
       <DependentUpon>ContextoProyecto.tt</DependentUpon>
     </Compile>
@@ -101,19 +86,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="ContextoUsuario.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ContextoUsuario.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <EntityDeploy Include="ContextoProyecto.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ContextoProyecto.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="ContextoProyecto.edmx.diagram">
       <DependentUpon>ContextoProyecto.edmx</DependentUpon>
-    </None>
-    <None Include="ContextoUsuario.edmx.diagram">
-      <DependentUpon>ContextoUsuario.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -127,16 +105,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ContextoProyecto.edmx</DependentUpon>
       <LastGenOutput>ContextoProyecto.cs</LastGenOutput>
-    </Content>
-    <Content Include="ContextoUsuario.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ContextoUsuario.edmx</DependentUpon>
-      <LastGenOutput>ContextoUsuario.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ContextoUsuario.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ContextoUsuario.edmx</DependentUpon>
-      <LastGenOutput>ContextoUsuario.cs</LastGenOutput>
     </Content>
     <Content Include="DLL.txt" />
   </ItemGroup>

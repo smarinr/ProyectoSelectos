@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -13,22 +12,58 @@ namespace Ulatina.Electiva.Classwork.Proyecto.MVC.Controllers
 {
     public class UsuariosController : Controller
     {
-        private UsuarioEntities db = new UsuarioEntities();
+        private ProyectoArticuloPerdidoEntities db = new ProyectoArticuloPerdidoEntities();
 
-        // GET: Usuarios
-        public async Task<ActionResult> Index()
+
+        public ViewResult Index(string sortOrder, string searchString)
         {
-            return View(await db.Usuarios.ToListAsync());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            var usuarios = from s in db.Usuario
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                usuarios = usuarios.Where(s => s.apellido1Usuario.Contains(searchString)
+                                       || s.nombreUsuario.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "apellido1Usuario ":
+                    usuarios = usuarios.OrderByDescending(s => s.apellido1Usuario);
+                    break;
+                case "apellido2Usuario ":
+                    usuarios = usuarios.OrderBy(s => s.apellido2Usuario);
+                    break;
+                case "nombreUsuario ":
+                    usuarios = usuarios.OrderByDescending(s => s.nombreUsuario);
+                    break;
+                default:
+                    usuarios = usuarios.OrderBy(s => s.apellido1Usuario);
+                    break;
+            }
+
+            return View(usuarios.ToList());
         }
 
+        /*
+           // GET: Usuarios
+        public ActionResult Index()
+        {
+            return View(db.Usuario.ToList());
+        }
+
+
+             
+        */
+
         // GET: Usuarios/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = await db.Usuarios.FindAsync(id);
+            Usuario usuario = db.Usuario.Find(id);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -47,12 +82,12 @@ namespace Ulatina.Electiva.Classwork.Proyecto.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idUsuario,nombreUsuario,apellido1Usuario,apellido2Usuario,telefonoUsuario,rolUsuario")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "idUsuario,nombreUsuario,apellido1Usuario,apellido2Usuario,telefonoUsuario,rolUsuario")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuario);
-                await db.SaveChangesAsync();
+                db.Usuario.Add(usuario);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -60,13 +95,13 @@ namespace Ulatina.Electiva.Classwork.Proyecto.MVC.Controllers
         }
 
         // GET: Usuarios/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = await db.Usuarios.FindAsync(id);
+            Usuario usuario = db.Usuario.Find(id);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -79,25 +114,25 @@ namespace Ulatina.Electiva.Classwork.Proyecto.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idUsuario,nombreUsuario,apellido1Usuario,apellido2Usuario,telefonoUsuario,rolUsuario")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "idUsuario,nombreUsuario,apellido1Usuario,apellido2Usuario,telefonoUsuario,rolUsuario")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(usuario).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(usuario);
         }
 
         // GET: Usuarios/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = await db.Usuarios.FindAsync(id);
+            Usuario usuario = db.Usuario.Find(id);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -108,11 +143,11 @@ namespace Ulatina.Electiva.Classwork.Proyecto.MVC.Controllers
         // POST: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Usuario usuario = await db.Usuarios.FindAsync(id);
-            db.Usuarios.Remove(usuario);
-            await db.SaveChangesAsync();
+            Usuario usuario = db.Usuario.Find(id);
+            db.Usuario.Remove(usuario);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

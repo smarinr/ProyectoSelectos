@@ -10,10 +10,20 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nombreUsuario)
+            @Html.ActionLink("Nombre Usuario", "Index", new { sortOrder = ViewBag.NameSortParm })
+            <!--@Html.DisplayNameFor(model => model.nombreUsuario)-->
         </th>
         <th>
             @Html.DisplayNameFor(model => model.apellido1Usuario)
