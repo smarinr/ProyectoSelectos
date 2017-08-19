@@ -15,10 +15,34 @@ namespace Ulatina.Electiva.Classwork.Proyecto.MVC.Controllers
         private ProyectoArticuloPerdidoEntities db = new ProyectoArticuloPerdidoEntities();
 
         // GET: ArticuloPerdidoes
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            var articuloPerdido = db.ArticuloPerdido.Include(a => a.Categoria);
-            return View(articuloPerdido.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            var usuarios = from s in db.ArticuloPerdido
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                usuarios = usuarios.Where(s => s.descripcionArticuloPerdido.Contains(searchString)
+                                       || s.statusArticuloPerdido.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "descripcionArticuloPerdido ":
+                    usuarios = usuarios.OrderByDescending(s => s.descripcionArticuloPerdido);
+                    break;
+                case "statusArticuloPerdido":
+                    usuarios = usuarios.OrderBy(s => s.statusArticuloPerdido);
+                    break;
+                default:
+                    usuarios = usuarios.OrderBy(s => s.descripcionArticuloPerdido);
+                    break;
+            }
+
+            return View(usuarios.ToList());
+
+           // var articuloPerdido = db.ArticuloPerdido.Include(a => a.Categoria);
+           // return View(articuloPerdido.ToList());
         }
 
         // GET: ArticuloPerdidoes/Details/5
