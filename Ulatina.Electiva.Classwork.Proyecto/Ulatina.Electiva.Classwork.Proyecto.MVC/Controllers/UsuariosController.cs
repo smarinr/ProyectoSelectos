@@ -64,7 +64,7 @@ namespace Ulatina.Electiva.Classwork.Proyecto.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuario.Find(id);
+            ArticuloPerdido usuario = db.ArticuloPerdido.Find(id);
             if (usuario == null)
             {
                 return HttpNotFound();
