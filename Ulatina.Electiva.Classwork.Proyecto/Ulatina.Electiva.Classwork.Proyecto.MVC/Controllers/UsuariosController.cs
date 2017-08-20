@@ -18,7 +18,8 @@ namespace Ulatina.Electiva.Classwork.Proyecto.MVC.Controllers
         public ViewResult Index(string sortOrder, string searchString)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.LastNameSortParm = String.IsNullOrEmpty(sortOrder) ? "lastname_desc" : "";
+            ViewBag.RolSortParm = String.IsNullOrEmpty(sortOrder) ? "rol_desc" : "";
             var usuarios = from s in db.Usuario
                            select s;
             if (!String.IsNullOrEmpty(searchString))
@@ -28,17 +29,17 @@ namespace Ulatina.Electiva.Classwork.Proyecto.MVC.Controllers
             }
             switch (sortOrder)
             {
-                case "apellido1Usuario ":
+                case "lastname_desc":
                     usuarios = usuarios.OrderByDescending(s => s.apellido1Usuario);
                     break;
-                case "apellido2Usuario ":
-                    usuarios = usuarios.OrderBy(s => s.apellido2Usuario);
+                case "rol_desc":
+                    usuarios = usuarios.OrderBy(s => s.rolUsuario);
                     break;
-                case "nombreUsuario ":
+                case "name_desc":
                     usuarios = usuarios.OrderByDescending(s => s.nombreUsuario);
                     break;
                 default:
-                    usuarios = usuarios.OrderBy(s => s.apellido1Usuario);
+                    usuarios = usuarios.OrderBy(s => s.nombreUsuario);
                     break;
             }
 

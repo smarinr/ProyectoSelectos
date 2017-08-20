@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Ulatina.Electiva.Classwork.Proyecto.Model.Custodia>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.ActionLink("fechaCustodiaIngresada", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArticuloPerdido.descripcionArticuloPerdido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.nombreUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario1.nombreUsuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaCustodiaIngresada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArticuloPerdido.descripcionArticuloPerdido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.nombreUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario1.nombreUsuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idCustodia }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idCustodia }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idCustodia })
+        </td>
+    </tr>
+}
+
+</table>

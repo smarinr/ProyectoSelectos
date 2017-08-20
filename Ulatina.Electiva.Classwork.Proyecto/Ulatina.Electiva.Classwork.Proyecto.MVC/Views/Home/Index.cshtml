@@ -1,31 +1,54 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Principal";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Gestion de Usuarios</h1>
+    <p class="lead">Módulo de gestión de usuarios.</p>
+    <p><a href="~/Usuarios/" class="btn btn-primary btn-lg">Usuarios &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Artículos en Custodia</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            En esta opción el usuario podrá realizar las acciones de:
+            <ul>
+                <li>Insertar un nuevo artículo entregado para custodia.</li>
+                <li>Consultar los artículos que existen en custodia por diferentes criterios.</li>
+                <li>Consultar el detalle de los artículos que han sido devueltos a sus diferentes dueños</li>
+            </ul>
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="~/ArticuloPerdidoes/">Artículos en Custodia &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Categorías</h2>
+        <p>
+            En esta opción el usuario podrá realizar las acciones de:
+            <ul>
+                <li>Insertar un nueva categoría de artículo.</li>
+                <li>Consultar las categorías que existen para los diferentes artículos.</li>
+            </ul>
+        </p>
+        <p><a class="btn btn-default" href="~/Categorias/">Categorías &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Custodias</h2>
+        <p>
+            En esta opción el usuario podrá realizar las acciones de:
+            <ul>
+                <li>
+                    Insertar un nuevo artículo entregado para custodia.
+                </li>
+                <li>
+                    Consultar los artículos que existen en custodia por diferentes criterios.
+                </li>
+                <li>
+                    Consultar el detalle de los artículos que han sido devueltos a sus diferentes dueños en un intervalo determinado de tiempo agrupado por categoría y subcategoría del artículo y ordenado por fecha de entrega del artículo.
+                </li>
+            </ul>
+        </p>
+
+        <p><a class="btn btn-default" href="~/Custodias/">Custodias &raquo;</a></p>
     </div>
 </div>

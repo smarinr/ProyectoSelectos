@@ -22,11 +22,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Nombre Usuario", "Index", new { sortOrder = ViewBag.NameSortParm })
-            <!--@Html.DisplayNameFor(model => model.nombreUsuario)-->
+            @Html.ActionLink("Nombre Usuario", "Index", new { sortOrder = ViewBag.NameSortParm })   
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.apellido1Usuario)
+            @Html.ActionLink("apellido1Usuario", "Index", new { sortOrder = ViewBag.LastNameSortParm })   
         </th>
         <th>
             @Html.DisplayNameFor(model => model.apellido2Usuario)
@@ -35,7 +34,7 @@
             @Html.DisplayNameFor(model => model.telefonoUsuario)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.rolUsuario)
+            @Html.ActionLink("Rol Usuario", "Index", new { sortOrder = ViewBag.RolSortParm })   
         </th>
         <th></th>
     </tr>

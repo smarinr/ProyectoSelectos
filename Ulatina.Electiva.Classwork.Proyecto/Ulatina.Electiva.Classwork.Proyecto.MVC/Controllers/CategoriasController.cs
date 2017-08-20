@@ -10,112 +10,107 @@ using Ulatina.Electiva.Classwork.Proyecto.Model;
 
 namespace Ulatina.Electiva.Classwork.Proyecto.MVC.Controllers
 {
-    public class ArticuloPerdidoesController : Controller
+    public class CategoriasController : Controller
     {
         private ProyectoArticuloPerdidoEntities db = new ProyectoArticuloPerdidoEntities();
 
-        // GET: ArticuloPerdidoes
+        // GET: Categorias
         public ActionResult Index()
         {
-            var articuloPerdido = db.ArticuloPerdido.Include(a => a.Categoria).Include(b =>b.Custodia);
-            return View(articuloPerdido.ToList());
+            return View(db.Categoria.ToList());
         }
 
-        // GET: ArticuloPerdidoes/Details/5
+        // GET: Categorias/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ArticuloPerdido articuloPerdido = db.ArticuloPerdido.Find(id);
-            if (articuloPerdido == null)
+            Categoria categoria = db.Categoria.Find(id);
+            if (categoria == null)
             {
                 return HttpNotFound();
             }
-            return View(articuloPerdido);
+            return View(categoria);
         }
 
-        // GET: ArticuloPerdidoes/Create
+        // GET: Categorias/Create
         public ActionResult Create()
         {
-            ViewBag.idCategoria = new SelectList(db.Categoria, "idCategoria", "nombreCategoria");
             return View();
         }
 
-        // POST: ArticuloPerdidoes/Create
+        // POST: Categorias/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idArticuloPerdido,descripcionArticuloPerdido,statusArticuloPerdido,idCategoria")] ArticuloPerdido articuloPerdido)
+        public ActionResult Create([Bind(Include = "idCategoria,nombreCategoria")] Categoria categoria)
         {
             if (ModelState.IsValid)
             {
-                db.ArticuloPerdido.Add(articuloPerdido);
+                db.Categoria.Add(categoria);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idCategoria = new SelectList(db.Categoria, "idCategoria", "nombreCategoria", articuloPerdido.idCategoria);
-            return View(articuloPerdido);
+            return View(categoria);
         }
 
-        // GET: ArticuloPerdidoes/Edit/5
+        // GET: Categorias/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ArticuloPerdido articuloPerdido = db.ArticuloPerdido.Find(id);
-            if (articuloPerdido == null)
+            Categoria categoria = db.Categoria.Find(id);
+            if (categoria == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.idCategoria = new SelectList(db.Categoria, "idCategoria", "nombreCategoria", articuloPerdido.idCategoria);
-            return View(articuloPerdido);
+            return View(categoria);
         }
 
-        // POST: ArticuloPerdidoes/Edit/5
+        // POST: Categorias/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idArticuloPerdido,descripcionArticuloPerdido,statusArticuloPerdido,idCategoria")] ArticuloPerdido articuloPerdido)
+        public ActionResult Edit([Bind(Include = "idCategoria,nombreCategoria")] Categoria categoria)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(articuloPerdido).State = EntityState.Modified;
+                db.Entry(categoria).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idCategoria = new SelectList(db.Categoria, "idCategoria", "nombreCategoria", articuloPerdido.idCategoria);
-            return View(articuloPerdido);
+            return View(categoria);
         }
 
-        // GET: ArticuloPerdidoes/Delete/5
+        // GET: Categorias/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ArticuloPerdido articuloPerdido = db.ArticuloPerdido.Find(id);
-            if (articuloPerdido == null)
+            Categoria categoria = db.Categoria.Find(id);
+            if (categoria == null)
             {
                 return HttpNotFound();
             }
-            return View(articuloPerdido);
+            return View(categoria);
         }
 
-        // POST: ArticuloPerdidoes/Delete/5
+        // POST: Categorias/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ArticuloPerdido articuloPerdido = db.ArticuloPerdido.Find(id);
-            db.ArticuloPerdido.Remove(articuloPerdido);
+            Categoria categoria = db.Categoria.Find(id);
+            db.Categoria.Remove(categoria);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

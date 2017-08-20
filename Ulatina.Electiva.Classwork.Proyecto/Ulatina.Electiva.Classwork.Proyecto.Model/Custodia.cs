@@ -11,13 +11,16 @@ namespace Ulatina.Electiva.Classwork.Proyecto.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Custodia
     {
         public int idCustodia { get; set; }
         public int idArticuloPerdido { get; set; }
         public int idUsuarioReporta { get; set; }
         public int idUsuarioCustodia { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}",
+               ApplyFormatInEditMode = true)]
         public System.DateTime fechaCustodiaIngresada { get; set; }
     
         public virtual ArticuloPerdido ArticuloPerdido { get; set; }
